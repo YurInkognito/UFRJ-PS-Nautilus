@@ -8,16 +8,16 @@ class AUVs:
     # Guarda todos os AUVs
     lista_auvs = []
 
-    def __init__(self, nome: str, ano: int, thursters: int, team: int):
+    def __init__(self, nome: str, ano: int, thursters: int, team: int, sensores: str):
         
-        auv = self.AUV(nome,  ano, thursters, team)
+        auv = self.AUV(nome,  ano, thursters, team, sensores)
         self.lista_auvs.append(auv)
-    
+         
     def print_auv(self):
         
-        tabela = [["Nome", "Ano", "Thursters", "Team"]]
+        tabela = [["Nome", "Ano", "Thursters", "Team", "Sensores"]]
         for auv in self.lista_auvs:
-            tabela.append([auv.nome, auv.ano, auv.thursters, auv.team])
+            tabela.append([auv.nome, auv.ano, auv.thursters, auv.team, auv.sensores])
         
         print(tabulate(tabela, headers="firstrow", tablefmt="fancy_grid", showindex="always"))
    
@@ -32,8 +32,8 @@ class AUVs:
             
             auv = self.lista_auvs[decisao]
             
-            tabela = [["Nome", "Ano", "Thursters", "Team"]]
-            tabela.append([auv.nome, auv.ano, auv.thursters, auv.team])
+            tabela = [["Nome", "Ano", "Thursters", "Team", "Sensores"]]
+            tabela.append([auv.nome, auv.ano, auv.thursters, auv.team, auv.sensores])
 
             print(tabulate(tabela, headers="firstrow", tablefmt="fancy_grid"))
         except:
@@ -53,14 +53,15 @@ class AUVs:
             print("Esse comando não existe. ")
 
     class AUV:
-        def __init__(self, nome: str, ano: int, thursters: int, team: int):
+        def __init__(self, nome: str, ano: int, thursters: int, team: int, sensores:str):
             self.nome = nome
             self.ano = ano
             self.thursters = thursters
             self.team = team
+            self.sensores = sensores
 
 #Instancia um objeto da Classe "AUVs"
-auvs = AUVs(nome='AUV Lua', ano=2022, thursters=8, team=42)
-auvs = AUVs(nome='AUV BrHue', ano=2020, thursters=6, team=35)
+auvs = AUVs(nome='AUV Lua', ano=2022, thursters=8, team=42, sensores='ATMega 328P, BAR30, I²C, BMP180, L298N, NPW')
+auvs = AUVs(nome='AUV BrHue', ano=2020, thursters=6, team=35, sensores='V.O, IMU, depth, SLAM, RTAB-Map')
 
 auvs.escolha()
