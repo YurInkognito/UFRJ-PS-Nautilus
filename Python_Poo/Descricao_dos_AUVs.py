@@ -12,7 +12,9 @@ class AUVs:
         
         auv = self.AUV(nome,  ano, thursters, team, sensores)
         self.lista_auvs.append(auv)
-         
+    
+
+    #exibe a tabela dos auvs
     def print_auv(self):
         
         tabela = [["Nome", "Ano", "Thursters", "Team", "Sensores"]]
@@ -21,6 +23,8 @@ class AUVs:
         
         print(tabulate(tabela, headers="firstrow", tablefmt="fancy_grid", showindex="always"))
    
+
+   # Exibe uma pergunta sobre qual deve ser exibido
     def print_auv_especifico(self):
         
         try:
@@ -39,6 +43,8 @@ class AUVs:
         except:
             print("Esse AUV não existe")
     
+
+    # Chama o print_auv e o exibe para as opções escolhidas
     def escolha(self):
         
         decisao = input("Digite 'pa' para mostrar todos os AUVs ou digite 'ps' para algum AUV em especifico: ")
@@ -52,6 +58,8 @@ class AUVs:
         else:
             print("Esse comando não existe. ")
 
+
+    # Classe para declarar as variáveis
     class AUV:
         def __init__(self, nome: str, ano: int, thursters: int, team: int, sensores:str):
             self.nome = nome
@@ -60,7 +68,7 @@ class AUVs:
             self.team = team
             self.sensores = sensores
 
-#Instancia um objeto da Classe "AUVs"
+# Informações dos auvs
 auvs = AUVs(nome='AUV Lua', ano=2022, thursters=8, team=42, sensores='ATMega 328P, BAR30, I²C, BMP180, L298N, NPW')
 auvs = AUVs(nome='AUV BrHue', ano=2020, thursters=6, team=35, sensores='V.O, IMU, depth, SLAM, RTAB-Map')
 
