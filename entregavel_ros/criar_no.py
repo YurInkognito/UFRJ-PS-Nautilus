@@ -1,28 +1,39 @@
 #!/usr/bin/python3
 
 import rospy
-from std_msgs.msg import Float32
+from std_msgs.msg import Float32MultiArray
 from geometry_msgs.msg import Vector3
 
-def calcular_modulo_vetor(vetor):
-    modulo = (vetor.x**2 + vetor.y**2 + vetor.z**2)**0.5
 
-    vetor.x = 3.0
-    vetor.y = 5.0
-    vetor.z = 5.8
+class calcular_modulo_vetor:
 
-    return modulo
+    def __init__(self, x=4.0, y=6.0, z=3.0):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def calcular_modulo(self):
+        return (self.x**2 + self.y**2 + self.z**2)**0.5
 
 
 def callback(data):
-    modulo = calcular_modulo_vetor(data)
-    pub = rospy.Publisher('/modulo', Float32, queue_size=10)
-    pub.publish(modulo)
+    x = data.x
+    y = data.y
+    z = data.z
+    modulo = calcular_modulo_vetor(x, y, z).calcular_modulo()
+    pub = rospy.Publisher('/modulo', Float32MultiArray, queue_size=10)
+    rate = rospy.Rate(10)
+    pub.publish(Float32MultiArray(data=[modulo]))
+    rate.sleep()
 
 def meu_no():
     rospy.init_node('meu_no', anonymous=True)
     rospy.Subscriber('/vetor', Vector3, callback)
     rospy.spin()
 
+
 if __name__ == '__main__':
-    meu_no()
+    try:
+        meu_no()
+    except rospy.ROSInterruptException:
+        pass
