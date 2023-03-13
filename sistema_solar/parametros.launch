@@ -1,0 +1,8 @@
+<launch>
+  <param name="star_radius" value="1.0"/>
+  <param name="planet_radius" value="0.5"/>
+  <param name="satellite_radius" value="0.1"/>
+  <param name="planet_orbit_radius" value="3.0"/>
+  <param name="satellite_orbit_radius" value="1.0"/>
+  <node name="solar_system" type="solar_system_node"/>
+</launch>

@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/src/sistema_solar/build/devel
+
+Name: sistema_solar
+Description: Description of sistema_solar
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

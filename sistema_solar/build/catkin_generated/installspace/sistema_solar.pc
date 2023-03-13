@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: sistema_solar
+Description: Description of sistema_solar
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
